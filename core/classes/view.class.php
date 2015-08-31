@@ -19,9 +19,27 @@ class View  {
 		}
 
 		if( $folder != "" ) {
-			require_once( ROOT . DS . 'app' . DS . 'view' . DS . $folder . DS . strtolower( $view ) . '.view.php' );	
+			if( file_exists( ROOT . DS . 'app' . DS . 'view' . DS . $folder . DS . strtolower( $view ) . '.view.php' ) ) {
+				require_once( ROOT . DS . 'app' . DS . 'view' . DS . $folder . DS . strtolower( $view ) . '.view.php' );		
+			}else {
+				if( DEVELOPER_MODE === true ) {
+					echo 'Missing View. Add '.$view. ' in app/view';
+				}else {
+					new errorController();
+				}
+			}
+			
 		}else {
-			require_once( ROOT . DS . 'app' . DS . 'view' . DS . strtolower( $view ) .'.view.php' );	
+			if( file_exists( ROOT . DS . 'app' . DS . 'view' . DS . strtolower( $view ) .'.view.php' ) ) {
+				require_once( ROOT . DS . 'app' . DS . 'view' . DS . strtolower( $view ) .'.view.php' );		
+			}else {
+				if( DEVELOPER_MODE === true ) {
+					echo 'Missing View. Add '.$view. ' in app/view';
+				}else {
+					new errorController();
+				}
+			}
+			
 		}
 		
 	}

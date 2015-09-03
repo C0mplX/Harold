@@ -9,7 +9,8 @@ require_once( __DIR__ . '/../../core/init.php' );
 class ErrorController extends View {
 	
 	public function __construct() {
-
+		$this->renderView( 'header', 'template' );
 		$this->renderView( '404', 'error' );
+		$this->renderView( 'footer', 'template' );
 	}
 }

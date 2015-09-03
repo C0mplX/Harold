@@ -10,7 +10,7 @@ require_once( __DIR__ . '/../init.php' );
 class View  {
 	
 	public function renderView( $view, $folder = "", $data = "" ) {
-
+		
 		/**
 		* Check if there is any data transferd to the class
 		*/
